@@ -47,13 +47,10 @@
     "eslint": "^8.7.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.1",
+    "pre-commit": "^1.2.2",
     "prettier": "^2.5.1"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
+  "pre-commit": "lint-staged",
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "prettier --write",
