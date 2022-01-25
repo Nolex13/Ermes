@@ -22,7 +22,7 @@ const AppLogo = styled.img`
 `
 
 function App() {
-      console.log("ciao")
+       console.log("ciao")
   return (
     <div className="App">
       <header className="App-header">
