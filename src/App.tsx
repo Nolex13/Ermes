@@ -1,46 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 
-const Text = styled.p`
-	color: red;
+const Wrapper = styled.div`
+	border: 1px yellow solid;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+`;
+const Header = styled.header`
+	border: 1px solid red;
+	align-items: center;
+	height: 48px;
+	display: flex;
+	padding: 16px;
 `;
 
-const AppLogo = styled.img`
-	animation: App-logo-spin infinite 20s linear;
-	height: 40vmin;
-	pointer-events: none;
-
-	@keyframes App-logo-spin {
-		from {
-			transform: rotate(0deg);
-		}
-		to {
-			transform: rotate(360deg);
-		}
-	}
+const Container = styled.div`
+	display: flex;
+	flex: 2;
 `;
 
-function App() {
-	console.log('ciao');
-	return (
-		<div className="App">
-			<header className="App-header">
-				<AppLogo src={logo} alt="logo" />
-				<Text>
-					Edit <code>src/App.tsx</code> and save to reload.
-				</Text>
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</a>
-			</header>
-		</div>
-	);
-}
+const Sidebar = styled.div`
+	border: 1px solid green;
+	padding: 16px;
+	display: flex;
+	flex: 0 0 27%;
+	min-height: 100%;
+`;
+
+const Main = styled.div`
+	background-color: yellow;
+	display: flex;
+	flex: 1 1;
+	padding: 16px;
+	min-height: 100%;
+`;
+
+const App: FC = () => (
+	<Wrapper>
+		<Header>Ciao sono un header</Header>
+		<Container>
+			<Sidebar>Ciao sono una sidebar</Sidebar>
+			<Main>Ciao sono un main</Main>
+		</Container>
+	</Wrapper>
+);
 
 export default App;
