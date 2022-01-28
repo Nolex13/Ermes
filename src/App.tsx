@@ -1,18 +1,19 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
+import styled, { DefaultTheme, ThemeProvider } from 'styled-components';
+import { Sidebar } from './components/Sidebar';
+import { Main } from './components/Main';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Wrapper = styled.div`
-	border: 1px yellow solid;
+	font-family: 'Raleway', sans-serif;
 	display: flex;
 	flex-direction: column;
 	height: 100%;
 `;
 const Header = styled.header`
-	border: 1px solid red;
 	align-items: center;
-	height: 48px;
 	display: flex;
-	padding: 16px;
+	padding: 8px;
 `;
 
 const Container = styled.div`
@@ -20,30 +21,26 @@ const Container = styled.div`
 	flex: 2;
 `;
 
-const Sidebar = styled.div`
-	border: 1px solid green;
-	padding: 16px;
-	display: flex;
-	flex: 0 0 27%;
-	min-height: 100%;
-`;
-
-const Main = styled.div`
-	background-color: yellow;
-	display: flex;
-	flex: 1 1;
-	padding: 16px;
-	min-height: 100%;
-`;
+const theme: DefaultTheme = {
+	primary: '#2F3E46',
+	secondary: '#354F52',
+	light: '#CAD2C5',
+	warning: '#84A98C',
+	accent: '#52796F',
+};
 
 const App: FC = () => (
-	<Wrapper>
-		<Header>Ciao sono un header</Header>
-		<Container>
-			<Sidebar>Ciao sono una sidebar</Sidebar>
-			<Main>Ciao sono un main</Main>
-		</Container>
-	</Wrapper>
+	<ThemeProvider theme={theme}>
+		<Wrapper>
+			<Header>
+				<h1>Ermes</h1>
+			</Header>
+			<Container>
+				<Sidebar />
+				<Main />
+			</Container>
+		</Wrapper>
+	</ThemeProvider>
 );
 
 export default App;

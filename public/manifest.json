@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Ermes",
+  "name": "Eremes API client",
   "icons": [
     {
       "src": "favicon.ico",
