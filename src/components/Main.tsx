@@ -1,16 +1,12 @@
 import styled from 'styled-components';
 import { FC } from 'react';
-import {
-	Dropdown,
-	FormControl,
-	InputGroup,
-	Button,
-	Tabs,
-	Tab,
-} from 'react-bootstrap';
+import { Tab, Tabs } from 'react-bootstrap';
 import { ParamsTab } from './ParamsTab';
 import { BodyTab } from './BodyTab';
-import { DropdownTest } from './Dropdown';
+import { Dropdown } from './Dropdown/Dropdown';
+import { Input } from './Input/Input';
+import { Button } from './Button/Button';
+import { Row } from './Row/row';
 
 const MainWrapper = styled.div`
 	background: ${props => props.theme.dark4};
@@ -19,28 +15,15 @@ const MainWrapper = styled.div`
 	min-height: 100%;
 `;
 
-const Row = styled.div`
-	margin-top: 16px;
-	margin-bottom: 16px;
-`;
-
 export const Main: FC = () => (
 	<MainWrapper>
 		<Row>
-			<DropdownTest />
-			<InputGroup>
-				<Dropdown>
-					<Dropdown.Toggle variant="success">POST</Dropdown.Toggle>
-					<Dropdown.Menu>
-						<Dropdown.Item href="#/action-1">GET</Dropdown.Item>
-						<Dropdown.Item href="#/action-2">DELETE</Dropdown.Item>
-						<Dropdown.Item href="#/action-3">PUT</Dropdown.Item>
-						<Dropdown.Item href="#/action-3">OPTION</Dropdown.Item>
-					</Dropdown.Menu>
-				</Dropdown>
-				<FormControl value="/a/random/url/for/example/{{id}}" />
-				<Button>Send</Button>
-			</InputGroup>
+			<Dropdown
+				defaultValue="POST"
+				items={['POST', 'GET', 'PUT', 'DELETE', 'OPTION']}
+			/>
+			<Input value="/a/random/url/for/example/{{id}}" />
+			<Button> Send </Button>
 		</Row>
 		<Row>
 			<Tabs defaultActiveKey="params">

@@ -9,6 +9,7 @@ const StyledButton = styled.button`
 	padding: 8px;
 	border: thin solid ${props => props.theme.light2};
 	border-radius: 4px 0 4px 0;
+	height: 40px;
 `;
 
 const DropdownGroup = styled.div`
@@ -43,9 +44,14 @@ const DropdownWrapper = styled.div`
 	position: relative;
 `;
 
-export const DropdownTest: FC = () => {
+interface Props {
+	defaultValue: string;
+	items: string[];
+}
+
+export const Dropdown: FC<Props> = ({ defaultValue, items }) => {
 	const [show, setShow] = useState(false);
-	const [value, setValue] = useState('POST');
+	const [value, setValue] = useState(defaultValue);
 
 	const onButtonClick = () => () => setShow(!show);
 
@@ -62,15 +68,11 @@ export const DropdownTest: FC = () => {
 			{show && (
 				<DropdownGroup>
 					<DropdownArrow />
-					<DropdownItem onClick={() => onItemClick('POST')}>POST</DropdownItem>
-					<DropdownItem onClick={() => onItemClick('GET')}>GET</DropdownItem>
-					<DropdownItem onClick={() => onItemClick('PUT')}>PUT</DropdownItem>
-					<DropdownItem onClick={() => onItemClick('DELETE')}>
-						DELETE
-					</DropdownItem>
-					<DropdownItem onClick={() => onItemClick('OPTION')}>
-						OPTION
-					</DropdownItem>
+					{items.map(item => (
+						<DropdownItem onClick={() => onItemClick(item)}>
+							{item}
+						</DropdownItem>
+					))}
 				</DropdownGroup>
 			)}
 		</DropdownWrapper>
