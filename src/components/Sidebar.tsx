@@ -3,13 +3,13 @@ import { FC } from 'react';
 import { Method, Url } from './Url';
 
 const SidebarWrapper = styled.div`
-	background: ${props => props.theme.primary};
+	background: ${props => props.theme.dark3};
 	background: linear-gradient(
 		300deg,
-		${props => props.theme.primary} 0%,
-		${props => props.theme.accent} 100%
+		${props => props.theme.dark2} 0%,
+		${props => props.theme.dark4} 100%
 	);
-	color: ${props => props.theme.light};
+	color: ${props => props.theme.light1};
 	padding: 16px;
 	display: flex;
 	flex: 0 0 20%;

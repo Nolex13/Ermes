@@ -10,14 +10,10 @@ import {
 } from 'react-bootstrap';
 import { ParamsTab } from './ParamsTab';
 import { BodyTab } from './BodyTab';
+import { DropdownTest } from './Dropdown';
 
 const MainWrapper = styled.div`
-	background: ${props => props.theme.light};
-	background: linear-gradient(
-		330deg,
-		${props => props.theme.light} 0%,
-		${props => props.theme.warning} 28%
-	);
+	background: ${props => props.theme.dark4};
 	flex: 1 1;
 	padding: 16px;
 	min-height: 100%;
@@ -31,6 +27,7 @@ const Row = styled.div`
 export const Main: FC = () => (
 	<MainWrapper>
 		<Row>
+			<DropdownTest />
 			<InputGroup>
 				<Dropdown>
 					<Dropdown.Toggle variant="success">POST</Dropdown.Toggle>

@@ -6,14 +6,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Wrapper = styled.div`
 	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
 	display: flex;
 	flex-direction: column;
 	height: 100%;
 `;
 const Header = styled.header`
+	background-color: ${props => props.theme.dark2};
+	border-bottom: thin solid ${props => props.theme.light2};
+	color: white;
 	align-items: center;
 	display: flex;
-	padding: 8px;
+	padding: 8px 16px;
 `;
 
 const Container = styled.div`
@@ -22,9 +26,16 @@ const Container = styled.div`
 `;
 
 const theme: DefaultTheme = {
-	primary: '#2F3E46',
-	secondary: '#354F52',
-	light: '#CAD2C5',
+	dark1: '#06080A',
+	dark2: '#0D1217',
+	dark3: '#141C24',
+	dark4: '#1C2631',
+	dark5: '#23303E',
+	dark6: '#2A3B4B',
+	primary: '#212F45',
+	secondary: '#1B3A4B',
+	light1: '#dedede',
+	light2: '#525252',
 	warning: '#84A98C',
 	accent: '#52796F',
 };
