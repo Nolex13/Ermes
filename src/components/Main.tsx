@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { FC } from 'react';
-import { Tab, Tabs } from 'react-bootstrap';
 import { ParamsTab } from './ParamsTab';
 import { BodyTab } from './BodyTab';
 import { Dropdown } from './Dropdown/Dropdown';
 import { Input } from './Input/Input';
 import { Button } from './Button/Button';
-import { Row } from './Row/row';
+import { Row } from './Row/Row';
+import { Tabs } from './Tab/Tabs';
+import { Tab } from './Tab/Tab';
 
 const MainWrapper = styled.div`
 	background: ${props => props.theme.dark4};
@@ -26,21 +27,15 @@ export const Main: FC = () => (
 			<Button> Send </Button>
 		</Row>
 		<Row>
-			<Tabs defaultActiveKey="params">
-				<Tab eventKey="params" title="Params">
-					<Row>
-						<ParamsTab />
-					</Row>
+			<Tabs>
+				<Tab title="Params">
+					<ParamsTab />
 				</Tab>
-				<Tab eventKey="body" title="Body">
-					<Row>
-						<BodyTab />
-					</Row>
+				<Tab title="Body">
+					<BodyTab />
 				</Tab>
-				<Tab eventKey="headers" title="Headers">
-					<Row>
-						<ParamsTab />
-					</Row>
+				<Tab title="Headers">
+					<ParamsTab />
 				</Tab>
 			</Tabs>
 		</Row>
