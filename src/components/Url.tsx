@@ -1,4 +1,4 @@
-import { FC, ReactElement } from 'react';
+import React, { FC, ReactElement } from 'react';
 import { HiMenuAlt1 } from 'react-icons/hi';
 import styled from 'styled-components';
 

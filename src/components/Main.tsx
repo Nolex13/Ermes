@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { ParamsTab } from './ParamsTab';
 import { BodyTab } from './BodyTab';
 import { Dropdown } from './Dropdown/Dropdown';
@@ -23,7 +23,7 @@ export const Main: FC = () => (
 				defaultValue="POST"
 				items={['POST', 'GET', 'PUT', 'DELETE', 'OPTION']}
 			/>
-			<Input value="/a/random/url/for/example/{{id}}" />
+			<Input defaultValue="/a/random/url/for/example/{{id}}" />
 			<Button> Send </Button>
 		</Row>
 		<Row>

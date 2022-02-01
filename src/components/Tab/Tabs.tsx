@@ -1,4 +1,4 @@
-import { FC, ReactElement, useState } from 'react';
+import React, { FC, ReactElement, useState } from 'react';
 import styled from 'styled-components';
 import { TabProps } from './Tab';
 
@@ -10,7 +10,7 @@ const TabsHeader = styled.ul`
 	padding: 0;
 
 	& li {
-		padding: 0 8px;
+		padding: 0 8px 8px 8px;
 		margin: 0 8px;
 		cursor: pointer;
 
@@ -22,6 +22,7 @@ const TabsHeader = styled.ul`
 
 const TabBody = styled.div`
 	color: ${p => p.theme.light1};
+	margin-top: 32px;
 `;
 
 const TabWrapper = styled.div`
@@ -40,8 +41,9 @@ export const Tabs: FC<{ children: ReactElement<TabProps>[] }> = ({
 			<TabsHeader>
 				{children.map((tab, index) => (
 					<li
-						className={index == activeTab ? 'active' : ''}
+						className={index === activeTab ? 'active' : ''}
 						onClick={() => setActiveTab(index)}
+						key={tab.props.title}
 					>
 						{tab.props.title}
 					</li>

@@ -10,4 +10,7 @@ export const Input = styled.input`
 	height: 40px;
 	padding: 8px 16px;
 	flex: 1 1;
+	font-weight: 300;
+	font-family: 'Raleway', sans-serif;
+	font-size: 1em;
 `;

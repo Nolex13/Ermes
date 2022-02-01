@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import styled, { DefaultTheme, ThemeProvider } from 'styled-components';
 import { Sidebar } from './components/Sidebar';
 import { Main } from './components/Main';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Wrapper = styled.div`
 	font-family: 'Raleway', sans-serif;

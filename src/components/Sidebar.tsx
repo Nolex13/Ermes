@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { Method, Url } from './Url';
 
 const SidebarWrapper = styled.div`

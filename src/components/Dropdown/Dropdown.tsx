@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import React, { FC, useState } from 'react';
 import styled from 'styled-components';
 import { HiChevronDown } from 'react-icons/hi';
 import { VscTriangleUp } from 'react-icons/vsc';
