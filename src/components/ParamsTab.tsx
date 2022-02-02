@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Input } from './Input/Input';
 import { MdOutlineDeleteOutline, MdAddCircleOutline } from 'react-icons/md';
 import { uuid } from '../utils/Uuid';
-import { set } from 'husky';
 
 const Table = styled.table`
 	width: 100%;
