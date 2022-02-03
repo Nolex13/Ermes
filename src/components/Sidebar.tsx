@@ -1,7 +1,9 @@
 import styled from 'styled-components';
-import React, { FC } from 'react';
-import { Method, Url } from './Url';
+import React, { FC, useContext } from 'react';
+import { RequestPreview } from './RequestPreview';
 import { MdAddCircleOutline } from 'react-icons/md';
+import { ActionType } from '../context/ActionType';
+import { DataContext } from '../context/DataContext';
 
 const SidebarWrapper = styled.div`
 	background: ${props => props.theme.dark3};
@@ -29,17 +31,21 @@ const Controls = styled.div`
 	justify-content: flex-end;
 `;
 
-export const Sidebar: FC = () => (
-	<SidebarWrapper>
-		<Urls>
-			<Url method={Method.GET} />
-			<Url method={Method.POST} />
-			<Url method={Method.PUT} />
-			<Url method={Method.DELETE} />
-			<Url method={Method.OPTION} />
-		</Urls>
-		<Controls>
-			<MdAddCircleOutline />
-		</Controls>
-	</SidebarWrapper>
-);
+export const Sidebar: FC = () => {
+	const { state, dispatch } = useContext(DataContext);
+	const addNewUrl = () => {
+		dispatch({ type: ActionType.ADD_REQUEST });
+	};
+	return (
+		<SidebarWrapper>
+			<Urls>
+				{state.requests.map(request => (
+					<RequestPreview request={request} key={request.index} />
+				))}
+			</Urls>
+			<Controls>
+				<MdAddCircleOutline onClick={() => addNewUrl()} />
+			</Controls>
+		</SidebarWrapper>
+	);
+};

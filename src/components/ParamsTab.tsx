@@ -1,8 +1,8 @@
 import React, { FC, useState } from 'react';
 import styled from 'styled-components';
-import { Input } from './Input/Input';
 import { MdOutlineDeleteOutline, MdAddCircleOutline } from 'react-icons/md';
 import { uuid } from '../utils/Uuid';
+import { TransparentInput } from './Input/TransparentInput';
 
 const Table = styled.table`
 	width: 100%;
@@ -12,18 +12,6 @@ const Table = styled.table`
 	th {
 		border: thin solid ${p => p.theme.light2};
 		padding: 8px;
-	}
-`;
-
-const TransparentInput = styled(Input)`
-	background-color: ${p => p.theme.dark4};
-	border: none;
-	height: auto;
-	padding: 0;
-	width: 100%;
-
-	&:focus {
-		outline: none;
 	}
 `;
 
@@ -93,7 +81,7 @@ export const ParamsTab: FC = () => {
 			<Table>
 				<thead>
 					<tr>
-						<th></th>
+						<th />
 						<th>Key</th>
 						<th>Value</th>
 					</tr>

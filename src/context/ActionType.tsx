@@ -1,0 +1,6 @@
+export enum ActionType {
+	ADD_REQUEST,
+	RENAME_REQUEST,
+	DUPLICATE_REQUEST,
+	DELETE_REQUEST,
+}
