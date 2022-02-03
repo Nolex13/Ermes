@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
 import { RequestPreview } from './RequestPreview';
 import { MdAddCircleOutline } from 'react-icons/md';
-import { ActionType } from '../context/ActionType';
-import { DataContext } from '../context/DataContext';
+import { useAppDispatch, useAppSelector } from '../data/Hooks';
+import { add } from '../data/slices/RequestSlice';
 
 const SidebarWrapper = styled.div`
 	background: ${props => props.theme.dark3};
@@ -32,14 +32,16 @@ const Controls = styled.div`
 `;
 
 export const Sidebar: FC = () => {
-	const { state, dispatch } = useContext(DataContext);
+	const requests = useAppSelector(state => state.requests);
+	const dispatch = useAppDispatch();
+
 	const addNewUrl = () => {
-		dispatch({ type: ActionType.ADD_REQUEST });
+		dispatch(add());
 	};
 	return (
 		<SidebarWrapper>
 			<Urls>
-				{state.requests.map(request => (
+				{requests.map(request => (
 					<RequestPreview request={request} key={request.index} />
 				))}
 			</Urls>

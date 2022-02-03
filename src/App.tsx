@@ -2,7 +2,9 @@ import React, { FC } from 'react';
 import styled, { DefaultTheme, ThemeProvider } from 'styled-components';
 import { Sidebar } from './components/Sidebar';
 import { Main } from './components/Main';
-import { DataProvider } from './context/DataContext';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { Store } from './data/Store';
 
 const Wrapper = styled.div`
 	font-family: 'Raleway', sans-serif;
@@ -19,7 +21,6 @@ const Header = styled.header`
 	display: flex;
 	padding: 8px 16px;
 `;
-
 const Container = styled.div`
 	display: flex;
 	flex: 2;
@@ -42,17 +43,22 @@ const theme: DefaultTheme = {
 
 const App: FC = () => (
 	<ThemeProvider theme={theme}>
-		<DataProvider>
-			<Wrapper>
-				<Header>
-					<h1>Ermes</h1>
-				</Header>
-				<Container>
-					<Sidebar />
-					<Main />
-				</Container>
-			</Wrapper>
-		</DataProvider>
+		<Provider store={Store}>
+			<BrowserRouter>
+				<Wrapper>
+					<Header>
+						<h1>Ermes</h1>
+					</Header>
+					<Container>
+						<Sidebar />
+						<Routes>
+							<Route path="/" element={<Main />} />
+							<Route path="/requests/:requestId" element={<Main />} />
+						</Routes>
+					</Container>
+				</Wrapper>
+			</BrowserRouter>
+		</Provider>
 	</ThemeProvider>
 );
 

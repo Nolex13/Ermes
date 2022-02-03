@@ -1,12 +1,13 @@
-import React, { ChangeEvent, FC, ReactElement, useContext } from 'react';
+import React, { ChangeEvent, FC, ReactElement } from 'react';
 import { HiMenuAlt1 } from 'react-icons/hi';
 import styled from 'styled-components';
 import { IconDropdownElement, IconWithDropdown } from './Icon/IconWithDropdown';
 import { MdOutlineDeleteOutline } from 'react-icons/md';
-import { Method, Request } from '../context/Data';
+import { Method, Request } from '../data/Data';
 import { TransparentInput } from './Input/TransparentInput';
-import { DataContext } from '../context/DataContext';
-import { ActionType } from '../context/ActionType';
+import { NavLink } from 'react-router-dom';
+import { useAppDispatch } from '../data/Hooks';
+import { duplicate, remove, update } from '../data/slices/RequestSlice';
 
 interface BadgeProps {
 	color: string;
@@ -21,7 +22,9 @@ const Badge = styled.span<BadgeProps>`
 	background-color: ${props => props.color};
 `;
 
-const UrlWrapper = styled.div`
+const UrlWrapper = styled(NavLink)`
+	text-decoration: none;
+	color: ${p => p.theme.light1};
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -44,28 +47,33 @@ const Description = styled(TransparentInput)`
 `;
 
 export const RequestPreview: FC<Props> = ({ request }) => {
-	const { dispatch } = useContext(DataContext);
+	const dispatch = useAppDispatch();
+
 	const onDescriptionChange = (e: ChangeEvent<HTMLInputElement>) => {
-		dispatch({
-			type: ActionType.RENAME_REQUEST,
-			index: request.index,
-			newValue: e.target.value,
-		});
+		const updatedRequest = {
+			...request,
+			description: e.target.value,
+		};
+		dispatch(
+			update({
+				index: request.index,
+				newValue: updatedRequest,
+			}),
+		);
 	};
 	const duplicateRequest = () => {
-		dispatch({
-			type: ActionType.DUPLICATE_REQUEST,
-			index: request.index,
-		});
+		dispatch(
+			duplicate({
+				index: request.index,
+			}),
+		);
 	};
 	const deleteRequest = () => {
-		dispatch({
-			type: ActionType.DELETE_REQUEST,
-			index: request.index,
-		});
+		dispatch(remove({ index: request.index }));
 	};
+
 	return (
-		<UrlWrapper>
+		<UrlWrapper to={`/requests/${request.index}`}>
 			{methodToBadge.get(request.method)}
 			<Description
 				value={request.description}

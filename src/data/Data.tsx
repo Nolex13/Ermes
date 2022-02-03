@@ -1,5 +1,6 @@
 export type Data = {
 	requests: Request[];
+	getRequestById: (index: string) => Request;
 };
 
 export enum Method {

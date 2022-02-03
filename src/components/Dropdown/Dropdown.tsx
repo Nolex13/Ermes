@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { HiChevronDown } from 'react-icons/hi';
 import { VscTriangleUp } from 'react-icons/vsc';
@@ -45,13 +45,14 @@ const DropdownWrapper = styled.div`
 `;
 
 interface Props {
-	defaultValue: string;
+	initialValue: string;
 	items: string[];
 }
 
-export const Dropdown: FC<Props> = ({ defaultValue, items }) => {
+export const Dropdown: FC<Props> = ({ initialValue, items }) => {
 	const [show, setShow] = useState(false);
-	const [value, setValue] = useState(defaultValue);
+	const [value, setValue] = useState(initialValue);
+	useEffect(() => setValue(initialValue), [initialValue]);
 
 	const onButtonClick = () => () => setShow(!show);
 
@@ -69,7 +70,7 @@ export const Dropdown: FC<Props> = ({ defaultValue, items }) => {
 				<DropdownGroup>
 					<DropdownArrow />
 					{items.map(item => (
-						<DropdownItem onClick={() => onItemClick(item)}>
+						<DropdownItem onClick={() => onItemClick(item)} key={item}>
 							{item}
 						</DropdownItem>
 					))}
