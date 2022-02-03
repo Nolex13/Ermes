@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import styled, { DefaultTheme, ThemeProvider } from 'styled-components';
 import { Sidebar } from './components/Sidebar';
 import { Main } from './components/Main';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { Store } from './data/Store';
 
@@ -44,20 +43,15 @@ const theme: DefaultTheme = {
 const App: FC = () => (
 	<ThemeProvider theme={theme}>
 		<Provider store={Store}>
-			<BrowserRouter>
-				<Wrapper>
-					<Header>
-						<h1>Ermes</h1>
-					</Header>
-					<Container>
-						<Sidebar />
-						<Routes>
-							<Route path="/" element={<Main />} />
-							<Route path="/requests/:requestId" element={<Main />} />
-						</Routes>
-					</Container>
-				</Wrapper>
-			</BrowserRouter>
+			<Wrapper>
+				<Header>
+					<h1>Ermes</h1>
+				</Header>
+				<Container>
+					<Sidebar />
+					<Main />
+				</Container>
+			</Wrapper>
 		</Provider>
 	</ThemeProvider>
 );

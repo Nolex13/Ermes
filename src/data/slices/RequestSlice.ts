@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Method, Request } from '../Data';
+import { Method, Request } from '../Types';
 import { uuid } from '../../utils/Uuid';
 import { RootState } from '../Store';
 
@@ -28,7 +28,7 @@ type DeleteAction = PayloadAction<{ index: string }>;
 type DuplicateAction = PayloadAction<{ index: string }>;
 
 export const RequestSlice = createSlice({
-	name: 'data',
+	name: 'requests',
 	initialState,
 	reducers: {
 		add: state => {

@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { requestsReducer } from './slices/RequestSlice';
+import { pagesReducer } from './slices/PagesSlice';
 
 export const Store = configureStore({
 	reducer: {
 		requests: requestsReducer,
+		pagination: pagesReducer,
 	},
 });
 

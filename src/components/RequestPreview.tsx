@@ -3,11 +3,11 @@ import { HiMenuAlt1 } from 'react-icons/hi';
 import styled from 'styled-components';
 import { IconDropdownElement, IconWithDropdown } from './Icon/IconWithDropdown';
 import { MdOutlineDeleteOutline } from 'react-icons/md';
-import { Method, Request } from '../data/Data';
+import { Method, Request } from '../data/Types';
 import { TransparentInput } from './Input/TransparentInput';
-import { NavLink } from 'react-router-dom';
 import { useAppDispatch } from '../data/Hooks';
 import { duplicate, remove, update } from '../data/slices/RequestSlice';
+import { add } from '../data/slices/PagesSlice';
 
 interface BadgeProps {
 	color: string;
@@ -22,9 +22,7 @@ const Badge = styled.span<BadgeProps>`
 	background-color: ${props => props.color};
 `;
 
-const UrlWrapper = styled(NavLink)`
-	text-decoration: none;
-	color: ${p => p.theme.light1};
+const UrlWrapper = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -71,9 +69,12 @@ export const RequestPreview: FC<Props> = ({ request }) => {
 	const deleteRequest = () => {
 		dispatch(remove({ index: request.index }));
 	};
+	const onSelect = () => {
+		dispatch(add(request));
+	};
 
 	return (
-		<UrlWrapper to={`/requests/${request.index}`}>
+		<UrlWrapper onClick={() => onSelect()}>
 			{methodToBadge.get(request.method)}
 			<Description
 				value={request.description}

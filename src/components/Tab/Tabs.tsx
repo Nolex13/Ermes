@@ -31,9 +31,11 @@ const TabWrapper = styled.div`
 	width: 100%;
 `;
 
-export const Tabs: FC<{ children: ReactElement<TabProps>[] }> = ({
-	children,
-}) => {
+interface Props {
+	children: ReactElement<TabProps>[];
+}
+
+export const Tabs: FC<Props> = ({ children }) => {
 	const [activeTab, setActiveTab] = useState(0);
 
 	return (

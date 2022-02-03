@@ -47,9 +47,10 @@ const DropdownWrapper = styled.div`
 interface Props {
 	initialValue: string;
 	items: string[];
+	onChange: (newValue: string) => void;
 }
 
-export const Dropdown: FC<Props> = ({ initialValue, items }) => {
+export const Dropdown: FC<Props> = ({ initialValue, items, onChange }) => {
 	const [show, setShow] = useState(false);
 	const [value, setValue] = useState(initialValue);
 	useEffect(() => setValue(initialValue), [initialValue]);
@@ -59,6 +60,7 @@ export const Dropdown: FC<Props> = ({ initialValue, items }) => {
 	const onItemClick = (value: string) => {
 		setValue(value);
 		setShow(false);
+		onChange(value);
 	};
 
 	return (
