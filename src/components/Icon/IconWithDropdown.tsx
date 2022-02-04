@@ -1,4 +1,4 @@
-import { FC, ReactElement, useState } from 'react';
+import { FC, ReactElement, useEffect, useRef, useState } from 'react';
 import { IconBaseProps } from 'react-icons/lib/cjs/iconBase';
 import styled from 'styled-components';
 
@@ -44,8 +44,21 @@ const DropdownElements = styled.div`
 
 export const IconWithDropdown: FC<Props> = ({ icon, children }) => {
 	const [show, setShow] = useState(false);
+	const ref = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (ref.current && !ref.current.contains(event.target as Node)) {
+				setShow(false);
+			}
+		};
+		document.addEventListener('click', handleClickOutside, true);
+		return () => {
+			document.removeEventListener('click', handleClickOutside, true);
+		};
+	}, []);
 	return (
-		<IconWrapper>
+		<IconWrapper ref={ref}>
 			<span onClick={() => setShow(!show)}>{icon}</span>
 			{show && <DropdownElements>{children}</DropdownElements>}
 		</IconWrapper>
