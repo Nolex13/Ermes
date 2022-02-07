@@ -1,26 +1,17 @@
 {
   "name": "ermes",
   "version": "0.1.0",
+  "homepage": "https://Nolex13.github.io",
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.2",
-    "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.4.0",
-    "@types/jsoneditor": "^9.5.1",
-    "@types/node": "^16.11.21",
-    "@types/react": "^17.0.38",
-    "@types/react-dom": "^17.0.11",
-    "@types/react-redux": "^7.1.22",
-    "@types/styled-components": "^5.1.21",
     "jsoneditor": "^9.7.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
     "react-redux": "^7.2.6",
     "react-scripts": "5.0.0",
+    "save-dev": "^0.0.1-security",
     "styled-components": "^5.3.3",
-    "typescript": "^4.5.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -28,7 +19,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint:staged": "lint-staged"
+    "lint:staged": "lint-staged",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -49,14 +42,27 @@
     ]
   },
   "devDependencies": {
+    "typescript": "^4.5.5",
     "@types/react-icons": "^3.0.0",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
     "@typescript-eslint/eslint-plugin": "^5.10.1",
     "@typescript-eslint/parser": "^5.10.1",
+    "@types/gh-pages": "^3.2.0",
+    "@types/jest": "^27.4.0",
+    "@types/jsoneditor": "^9.5.1",
+    "@types/node": "^16.11.21",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "@types/react-redux": "^7.1.22",
+    "@types/styled-components": "^5.1.21",
     "eslint": "^8.7.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.1",
     "pre-commit": "^1.2.2",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "gh-pages": "^3.2.3"
   },
   "pre-commit": "lint:staged",
   "lint-staged": {
