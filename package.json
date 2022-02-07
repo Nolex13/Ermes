@@ -1,7 +1,6 @@
 {
   "name": "ermes",
   "version": "0.1.0",
-  "homepage": "https://Nolex13.github.io",
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.2",
     "jsoneditor": "^9.7.0",
@@ -20,8 +19,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint:staged": "lint-staged",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "npm run build && node deploy.ts"
   },
   "eslintConfig": {
     "extends": [
