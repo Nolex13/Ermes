@@ -11,4 +11,12 @@ export type Request = {
 	method: Method;
 	description: string;
 	url: string;
+	params: Param[];
+};
+
+export type Param = {
+	index: string;
+	hidden: boolean;
+	key: string;
+	value: string;
 };

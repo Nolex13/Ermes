@@ -47,15 +47,14 @@ const OpenRequestContainer = styled.div`
 	}
 
 	& h3 {
-		overflow: hidden; /* Ensures the content is not revealed until the animation */
-		border-right: 0.15em solid orange; /* The typwriter cursor */
-		white-space: nowrap; /* Keeps the content on a single line */
-		margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-		letter-spacing: 0.15em; /* Adjust as needed */
+		overflow: hidden;
+		border-right: 0.15em solid orange;
+		white-space: nowrap;
+		margin: 0 auto;
+		letter-spacing: 0.15em;
 		animation: typing 3.5s steps(26, end), blink-caret 0.75s step-end infinite;
 	}
 
-	/* The typing effect */
 	@keyframes typing {
 		from {
 			width: 0;
@@ -65,7 +64,6 @@ const OpenRequestContainer = styled.div`
 		}
 	}
 
-	/* The typewriter cursor effect */
 	@keyframes blink-caret {
 		from,
 		to {

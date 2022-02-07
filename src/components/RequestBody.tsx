@@ -5,7 +5,7 @@ import { Dropdown } from './Dropdown/Dropdown';
 import { Button } from './Button/Button';
 import { Tabs } from './Tab/Tabs';
 import { Tab } from './Tab/Tab';
-import { ParamsTab } from './ParamsTab';
+import { ParamsTab } from './Params/ParamsTab';
 import { BodyTab } from './BodyTab';
 import { useAppDispatch, useAppSelector } from '../data/Hooks';
 import { getRequestBy, update } from '../data/slices/RequestSlice';
@@ -82,13 +82,13 @@ export const RequestBody: FC<Props> = ({ request }) => {
 			<Row>
 				<Tabs>
 					<Tab title="Params">
-						<ParamsTab />
+						<ParamsTab requestId={request.index} />
 					</Tab>
 					<Tab title="Body">
 						<BodyTab />
 					</Tab>
 					<Tab title="Headers">
-						<ParamsTab />
+						<ParamsTab requestId={request.index} />
 					</Tab>
 				</Tabs>
 			</Row>

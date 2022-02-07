@@ -9,12 +9,14 @@ const initialState: Request[] = [
 		index: '2e119b92-96c6-4f29-b9ae-da6ee1a14c72',
 		method: Method.GET,
 		url: '/a/random/url/for/example/{{id}}',
+		params: [],
 	},
 	{
 		description: 'get document by Id',
 		index: '2e119b92-96c6-4f29-b9ae-6969696',
 		method: Method.POST,
 		url: ':: an url::',
+		params: [],
 	},
 ];
 
@@ -39,6 +41,7 @@ export const RequestSlice = createSlice({
 					method: Method.GET,
 					url: '::an url::',
 					description: '::a description::',
+					params: [],
 				},
 			];
 		},
