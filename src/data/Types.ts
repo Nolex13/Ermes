@@ -12,6 +12,7 @@ export type Request = {
 	description: string;
 	url: string;
 	params: Param[];
+	body: object | null;
 };
 
 export type Param = {

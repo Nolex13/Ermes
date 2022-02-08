@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import React, { FC } from 'react';
 import { EnvironmentSelector } from './EnvironmentSelector';
+import { MdOutlineCloudUpload } from 'react-icons/md';
 
 const StyledHeader = styled.header`
 	background-color: ${props => props.theme.dark2};
@@ -11,9 +12,25 @@ const StyledHeader = styled.header`
 	justify-content: space-between;
 `;
 
+const RightHeader = styled.div`
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	gap: 16px;
+`;
+
+const UploadIcon = styled(MdOutlineCloudUpload)`
+	cursor: pointer;
+`;
+
 export const Header: FC = () => (
 	<StyledHeader>
-		<h1>Ermes</h1>
-		<EnvironmentSelector />
+		<div>
+			<h1>Ermes</h1>
+		</div>
+		<RightHeader>
+			<UploadIcon title="Upload" />
+			<EnvironmentSelector />
+		</RightHeader>
 	</StyledHeader>
 );

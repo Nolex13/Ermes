@@ -10,6 +10,7 @@ const initialState: Request[] = [
 		method: Method.GET,
 		url: '/a/random/url/for/example/{{id}}',
 		params: [],
+		body: { orderId: 69 },
 	},
 	{
 		description: 'get document by Id',
@@ -17,6 +18,7 @@ const initialState: Request[] = [
 		method: Method.POST,
 		url: ':: an url::',
 		params: [],
+		body: null,
 	},
 ];
 
@@ -42,10 +44,12 @@ export const RequestSlice = createSlice({
 					url: '::an url::',
 					description: '::a description::',
 					params: [],
+					body: null,
 				},
 			];
 		},
 		update: (state, action: UpdateAction) => {
+			console.log(action);
 			return state.map((r: Request) =>
 				r.index === action.payload.index ? action.payload.newValue : r,
 			);

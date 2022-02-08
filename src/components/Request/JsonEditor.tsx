@@ -1,7 +1,6 @@
 import React, { FC, useEffect } from 'react';
-import styled from 'styled-components';
-import 'jsoneditor/dist/jsoneditor.css';
 import JSONEditor from 'jsoneditor';
+import styled from 'styled-components';
 
 const StyledJsonEditor = styled.div`
 	& .jsoneditor {
@@ -14,28 +13,33 @@ const StyledJsonEditor = styled.div`
 	}
 `;
 
-const JsonEditor: FC = () => {
-	let container: HTMLElement | null = null;
+interface Props {
+	initialValue: object | null;
+	onChange: (value: object | null) => void;
+}
+
+export const JsonEditor: FC<Props> = ({ initialValue, onChange }) => {
 	let editor: JSONEditor | null = null;
 
 	useEffect(() => {
-		container = document.getElementById('jsoneditor');
-		if (container != null && editor === null) {
+		const container = document.getElementById('jsoneditor');
+		if (container !== null && editor === null) {
 			editor = new JSONEditor(container, {
 				history: true,
 				mode: 'code',
 				onChange: () => {
 					try {
-						console.log(editor?.get());
+						onChange(editor?.get());
 					} catch (e) {
 						//
 					}
 				},
 			});
+			if (initialValue !== null) {
+				editor.set(initialValue);
+			}
 		}
-	});
+	}, [editor]);
 
 	return <StyledJsonEditor id="jsoneditor" />;
 };
-
-export const BodyTab: FC = () => <JsonEditor />;

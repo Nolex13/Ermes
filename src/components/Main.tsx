@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { useAppSelector } from '../utils/Hooks';
 import { getActivePage } from '../data/slices/PagesSlice';
 import { Paginator } from './Paginator/Paginator';
-import { RequestBody } from './RequestBody';
+import { RequestBody } from './Request/RequestBody';
 import img from '../images/increase-productivity.png';
 
 const Container = styled.div`
