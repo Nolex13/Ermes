@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import React, { FC } from 'react';
 import { RequestPreview } from './RequestPreview';
 import { MdAddCircleOutline } from 'react-icons/md';
-import { useAppDispatch, useAppSelector } from '../data/Hooks';
+import { useAppDispatch, useAppSelector } from '../utils/Hooks';
 import { add } from '../data/slices/RequestSlice';
 
 const SidebarWrapper = styled.div`

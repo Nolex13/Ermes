@@ -7,7 +7,7 @@ import { Tabs } from './Tab/Tabs';
 import { Tab } from './Tab/Tab';
 import { ParamsTab } from './Params/ParamsTab';
 import { BodyTab } from './BodyTab';
-import { useAppDispatch, useAppSelector } from '../data/Hooks';
+import { useAppDispatch, useAppSelector } from '../utils/Hooks';
 import { getRequestBy, update } from '../data/slices/RequestSlice';
 import { Input } from './Input/Input';
 import styled from 'styled-components';

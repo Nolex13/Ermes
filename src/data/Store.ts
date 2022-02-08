@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { requestsReducer } from './slices/RequestSlice';
 import { pagesReducer } from './slices/PagesSlice';
+import { environmentReducer } from './slices/EnvironmentSlice';
 
 export const Store = configureStore({
 	reducer: {
 		requests: requestsReducer,
 		pagination: pagesReducer,
+		environment: environmentReducer,
 	},
 });
 

@@ -4,6 +4,7 @@ import { Sidebar } from './components/Sidebar';
 import { Main } from './components/Main';
 import { Provider } from 'react-redux';
 import { Store } from './data/Store';
+import { Header } from './components/Header/Header';
 
 const Wrapper = styled.div`
 	font-family: 'Raleway', sans-serif;
@@ -11,14 +12,6 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-`;
-const Header = styled.header`
-	background-color: ${props => props.theme.dark2};
-	border-bottom: thin solid ${props => props.theme.light2};
-	color: white;
-	align-items: center;
-	display: flex;
-	padding: 8px 16px;
 `;
 const Container = styled.div`
 	display: flex;
@@ -44,9 +37,7 @@ const App: FC = () => (
 	<ThemeProvider theme={theme}>
 		<Provider store={Store}>
 			<Wrapper>
-				<Header>
-					<h1>Ermes</h1>
-				</Header>
+				<Header />
 				<Container>
 					<Sidebar />
 					<Main />

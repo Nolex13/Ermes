@@ -5,7 +5,7 @@ import { IconDropdownElement, IconWithDropdown } from './Icon/IconWithDropdown';
 import { MdOutlineDeleteOutline } from 'react-icons/md';
 import { Method, Request } from '../data/Types';
 import { TransparentInput } from './Input/TransparentInput';
-import { useAppDispatch } from '../data/Hooks';
+import { useAppDispatch } from '../utils/Hooks';
 import { duplicate, remove, update } from '../data/slices/RequestSlice';
 import { add } from '../data/slices/PagesSlice';
 

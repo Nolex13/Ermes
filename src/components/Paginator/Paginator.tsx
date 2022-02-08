@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Page, PageCloseButton, PageDescription, Pages } from './Pages';
-import { useAppDispatch, useAppSelector } from '../../data/Hooks';
+import { useAppDispatch, useAppSelector } from '../../utils/Hooks';
 import { Request } from '../../data/Types';
 import { remove, select } from '../../data/slices/PagesSlice';
 
