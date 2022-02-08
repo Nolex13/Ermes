@@ -9,7 +9,22 @@ const initialState: Request[] = [
 		index: '2e119b92-96c6-4f29-b9ae-da6ee1a14c72',
 		method: Method.GET,
 		url: '/a/random/url/for/example/{{id}}',
-		params: [],
+		params: [
+			{
+				index: uuid(),
+				key: '',
+				value: '',
+				hidden: true,
+			},
+		],
+		header: [
+			{
+				index: uuid(),
+				key: 'Content-Type',
+				value: 'application/json',
+				hidden: false,
+			},
+		],
 		body: { orderId: 69 },
 	},
 	{
@@ -17,7 +32,22 @@ const initialState: Request[] = [
 		index: '2e119b92-96c6-4f29-b9ae-6969696',
 		method: Method.POST,
 		url: ':: an url::',
-		params: [],
+		params: [
+			{
+				index: uuid(),
+				key: '',
+				value: '',
+				hidden: true,
+			},
+		],
+		header: [
+			{
+				index: uuid(),
+				key: 'Content-Type',
+				value: 'application/json',
+				hidden: false,
+			},
+		],
 		body: null,
 	},
 ];
@@ -43,7 +73,22 @@ export const RequestSlice = createSlice({
 					method: Method.GET,
 					url: '::an url::',
 					description: '::a description::',
-					params: [],
+					params: [
+						{
+							index: uuid(),
+							key: '',
+							value: '',
+							hidden: true,
+						},
+					],
+					header: [
+						{
+							index: uuid(),
+							key: 'Content-Type',
+							value: 'application/json',
+							hidden: false,
+						},
+					],
 					body: null,
 				},
 			];

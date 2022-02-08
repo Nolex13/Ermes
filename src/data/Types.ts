@@ -11,11 +11,12 @@ export type Request = {
 	method: Method;
 	description: string;
 	url: string;
-	params: Param[];
+	params: KeyValueMap[];
+	header: KeyValueMap[];
 	body: object | null;
 };
 
-export type Param = {
+export type KeyValueMap = {
 	index: string;
 	hidden: boolean;
 	key: string;

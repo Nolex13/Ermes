@@ -3,10 +3,11 @@ import { Request } from '../../data/Types';
 import { Row } from '../Row/Row';
 import { Tabs } from '../Tab/Tabs';
 import { Tab } from '../Tab/Tab';
-import { ParamsTab } from '../Params/ParamsTab';
+import { ParamsTab } from './ParamsTab';
 import { BodyTab } from './BodyTab';
 import styled from 'styled-components';
 import { UrlBar } from './UrlBar';
+import { HeadersTab } from './HeaderTab';
 
 interface Props {
 	request: Request;
@@ -36,7 +37,7 @@ export const RequestBody: FC<Props> = ({ request }) => {
 						<BodyTab requestId={request.index} />
 					</Tab>
 					<Tab title="Headers">
-						<ParamsTab requestId={request.index} />
+						<HeadersTab requestId={request.index} />
 					</Tab>
 				</Tabs>
 			</Row>

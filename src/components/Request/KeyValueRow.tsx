@@ -1,15 +1,15 @@
 import React, { ChangeEvent, FC } from 'react';
 import { MdOutlineDeleteOutline } from 'react-icons/md';
 import { TransparentInput } from '../Input/TransparentInput';
-import { Param } from '../../data/Types';
+import { KeyValueMap } from '../../data/Types';
 
 interface Props {
-	param: Param;
+	param: KeyValueMap;
 	onDelete: (index: string) => void;
-	onChange: (param: Param) => void;
+	onChange: (param: KeyValueMap) => void;
 }
 
-export const ParamRow: FC<Props> = ({ param, onDelete, onChange }) => {
+export const KeyValueRow: FC<Props> = ({ param, onDelete, onChange }) => {
 	const onKeyChange = (e: ChangeEvent<HTMLInputElement>) => {
 		onChange({
 			...param,
@@ -27,7 +27,7 @@ export const ParamRow: FC<Props> = ({ param, onDelete, onChange }) => {
 			<td>
 				<MdOutlineDeleteOutline
 					onClick={() => onDelete(param.index)}
-					title="Delete this param"
+					title="Delete this row"
 				/>
 			</td>
 			<td>
