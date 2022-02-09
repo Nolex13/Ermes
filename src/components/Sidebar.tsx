@@ -3,7 +3,8 @@ import React, { FC } from 'react';
 import { RequestPreview } from './RequestPreview';
 import { MdAddCircleOutline } from 'react-icons/md';
 import { useAppDispatch, useAppSelector } from '../utils/Hooks';
-import { add } from '../data/slices/RequestSlice';
+import { add, createNewEmptyRequest } from '../data/slices/RequestSlice';
+import { enqueue } from '../data/slices/PagesSlice';
 
 const SidebarWrapper = styled.div`
 	background: ${props => props.theme.dark3};
@@ -29,6 +30,13 @@ const Urls = styled.div`
 const Controls = styled.div`
 	display: flex;
 	justify-content: flex-end;
+
+	& div {
+		display: flex;
+		gap: 8px;
+		align-items: center;
+		cursor: pointer;
+	}
 `;
 
 export const Sidebar: FC = () => {
@@ -36,7 +44,9 @@ export const Sidebar: FC = () => {
 	const dispatch = useAppDispatch();
 
 	const addNewUrl = () => {
-		dispatch(add());
+		const newRequest = createNewEmptyRequest();
+		dispatch(add(newRequest));
+		dispatch(enqueue(newRequest));
 	};
 	return (
 		<SidebarWrapper>
@@ -46,7 +56,9 @@ export const Sidebar: FC = () => {
 				))}
 			</Urls>
 			<Controls>
-				<MdAddCircleOutline onClick={() => addNewUrl()} />
+				<div onClick={() => addNewUrl()}>
+					Create a new request <MdAddCircleOutline />
+				</div>
 			</Controls>
 		</SidebarWrapper>
 	);

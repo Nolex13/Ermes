@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React, { FC } from 'react';
 import { EnvironmentSelector } from './EnvironmentSelector';
-import { MdOutlineCloudUpload } from 'react-icons/md';
+import { MdOutlineUpload } from 'react-icons/md';
 
 const StyledHeader = styled.header`
 	background-color: ${props => props.theme.dark2};
@@ -19,8 +19,9 @@ const RightHeader = styled.div`
 	gap: 16px;
 `;
 
-const UploadIcon = styled(MdOutlineCloudUpload)`
+const UploadIcon = styled(MdOutlineUpload)`
 	cursor: pointer;
+	font-size: 20px;
 `;
 
 export const Header: FC = () => (

@@ -23,7 +23,7 @@ export const PagesSlice = createSlice({
 	name: 'pages',
 	initialState,
 	reducers: {
-		add: (state, { payload }: PayloadAction<Request>) => {
+		enqueue: (state, { payload }: PayloadAction<Request>) => {
 			const index = state.pages.findIndex(p => p.index === payload.index);
 			if (index === -1) {
 				return {
@@ -55,7 +55,7 @@ export const PagesSlice = createSlice({
 	},
 });
 
-export const { removePage, add, select } = PagesSlice.actions;
+export const { removePage, enqueue, select } = PagesSlice.actions;
 
 export const pagesReducer = PagesSlice.reducer;
 

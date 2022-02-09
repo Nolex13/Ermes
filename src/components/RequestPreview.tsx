@@ -6,7 +6,7 @@ import { MdOutlineDeleteOutline } from 'react-icons/md';
 import { Method, Request } from '../data/Types';
 import { useAppDispatch } from '../utils/Hooks';
 import { duplicate, remove } from '../data/slices/RequestSlice';
-import { add, removePage } from '../data/slices/PagesSlice';
+import { enqueue, removePage } from '../data/slices/PagesSlice';
 
 interface BadgeProps {
 	color: string;
@@ -57,7 +57,7 @@ export const RequestPreview: FC<Props> = ({ request }) => {
 		dispatch(remove({ index: request.index }));
 	};
 	const onSelect = () => {
-		dispatch(add(request));
+		dispatch(enqueue(request));
 	};
 
 	return (

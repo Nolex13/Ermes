@@ -65,33 +65,8 @@ export const RequestSlice = createSlice({
 	name: 'requests',
 	initialState,
 	reducers: {
-		add: state => {
-			return [
-				...state,
-				{
-					index: uuid(),
-					method: Method.GET,
-					url: '::an url::',
-					description: '::a description::',
-					params: [
-						{
-							index: uuid(),
-							key: '',
-							value: '',
-							hidden: true,
-						},
-					],
-					header: [
-						{
-							index: uuid(),
-							key: 'Content-Type',
-							value: 'application/json',
-							hidden: false,
-						},
-					],
-					body: null,
-				},
-			];
+		add: (state, { payload }: PayloadAction<Request>) => {
+			return [...state, payload];
 		},
 		update: (state, action: UpdateAction) => {
 			console.log(action);
@@ -124,3 +99,27 @@ export const requestsReducer = RequestSlice.reducer;
 
 export const getRequestBy = (state: RootState, index: string): Request =>
 	state.requests.filter(p => p.index === index)[0];
+
+export const createNewEmptyRequest = (): Request => ({
+	index: uuid(),
+	method: Method.GET,
+	url: '::an url::',
+	description: '::a description::',
+	params: [
+		{
+			index: uuid(),
+			key: '',
+			value: '',
+			hidden: true,
+		},
+	],
+	header: [
+		{
+			index: uuid(),
+			key: 'Content-Type',
+			value: 'application/json',
+			hidden: false,
+		},
+	],
+	body: null,
+});
