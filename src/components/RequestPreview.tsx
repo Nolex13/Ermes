@@ -1,13 +1,12 @@
-import React, { ChangeEvent, FC, ReactElement } from 'react';
+import React, { FC, ReactElement } from 'react';
 import { HiMenuAlt1 } from 'react-icons/hi';
 import styled from 'styled-components';
 import { IconDropdownElement, IconWithDropdown } from './Icon/IconWithDropdown';
 import { MdOutlineDeleteOutline } from 'react-icons/md';
 import { Method, Request } from '../data/Types';
-import { TransparentInput } from './Input/TransparentInput';
 import { useAppDispatch } from '../utils/Hooks';
-import { duplicate, remove, update } from '../data/slices/RequestSlice';
-import { add } from '../data/slices/PagesSlice';
+import { duplicate, remove } from '../data/slices/RequestSlice';
+import { add, removePage } from '../data/slices/PagesSlice';
 
 interface BadgeProps {
 	color: string;
@@ -36,29 +35,16 @@ const methodToBadge: Map<Method, ReactElement> = new Map<Method, ReactElement>([
 	[Method.OPTION, <Badge color="#6c757d">OPTION</Badge>],
 ]);
 
+const Description = styled.span`
+	cursor: pointer;
+`;
+
 interface Props {
 	request: Request;
 }
 
-const Description = styled(TransparentInput)`
-	margin: 0 16px;
-`;
-
 export const RequestPreview: FC<Props> = ({ request }) => {
 	const dispatch = useAppDispatch();
-
-	const onDescriptionChange = (e: ChangeEvent<HTMLInputElement>) => {
-		const updatedRequest = {
-			...request,
-			description: e.target.value,
-		};
-		dispatch(
-			update({
-				index: request.index,
-				newValue: updatedRequest,
-			}),
-		);
-	};
 	const duplicateRequest = () => {
 		dispatch(
 			duplicate({
@@ -67,6 +53,7 @@ export const RequestPreview: FC<Props> = ({ request }) => {
 		);
 	};
 	const deleteRequest = () => {
+		dispatch(removePage(request.index));
 		dispatch(remove({ index: request.index }));
 	};
 	const onSelect = () => {
@@ -74,12 +61,9 @@ export const RequestPreview: FC<Props> = ({ request }) => {
 	};
 
 	return (
-		<UrlWrapper onClick={() => onSelect()}>
+		<UrlWrapper>
 			{methodToBadge.get(request.method)}
-			<Description
-				value={request.description}
-				onChange={e => onDescriptionChange(e)}
-			/>
+			<Description onClick={onSelect}>{request.description}</Description>
 			<IconWithDropdown icon={<HiMenuAlt1 />}>
 				<IconDropdownElement
 					icon={<MdOutlineDeleteOutline />}

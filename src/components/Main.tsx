@@ -78,7 +78,7 @@ const OpenRequestContainer = styled.div`
 const OpenRequest: FC = () => (
 	<OpenRequestContainer>
 		<h3>Increase your productivity</h3>
-		<h4>Create or open a request to start</h4>
+		<h4>Create or open (double click) a request to start</h4>
 		<Img />
 	</OpenRequestContainer>
 );

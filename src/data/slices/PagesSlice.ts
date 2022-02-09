@@ -44,7 +44,7 @@ export const PagesSlice = createSlice({
 				activePage: payload,
 			};
 		},
-		remove: (state, { payload }: PayloadAction<string>) => {
+		removePage: (state, { payload }: PayloadAction<string>) => {
 			const pages = state.pages.filter(r => r.index !== payload);
 			return {
 				...state,
@@ -55,7 +55,7 @@ export const PagesSlice = createSlice({
 	},
 });
 
-export const { remove, add, select } = PagesSlice.actions;
+export const { removePage, add, select } = PagesSlice.actions;
 
 export const pagesReducer = PagesSlice.reducer;
 
