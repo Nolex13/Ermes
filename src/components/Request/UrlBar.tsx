@@ -5,6 +5,9 @@ import { update } from '../../data/slices/RequestSlice';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { Url } from './Url';
 import { Button } from '../Button/Button';
+import { RequestExecutor } from '../../logic/RequestExecutor';
+import { setData, setLoading } from '../../data/slices/ResponseSlice';
+import { uuid } from '../../utils/Uuid';
 
 interface Props {
 	request: Request;
@@ -25,6 +28,23 @@ export const UrlBar: FC<Props> = ({ request }) => {
 			}),
 		);
 	};
+
+	const onSend = () => {
+		const executor = new RequestExecutor();
+		dispatch(setLoading(true));
+		executor.executeUsing(request).then(response => {
+			console.log('response', response);
+			dispatch(
+				setData({
+					index: uuid(),
+					body: response.json(),
+					header: [],
+					responseStatus: response.status,
+				}),
+			);
+		});
+	};
+
 	return (
 		<>
 			<Dropdown
@@ -33,7 +53,7 @@ export const UrlBar: FC<Props> = ({ request }) => {
 				onChange={onMethodChange}
 			/>
 			<Url requestId={request.index} />
-			<Button> Send </Button>
+			<Button onClick={onSend}> Send </Button>
 		</>
 	);
 };

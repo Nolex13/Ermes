@@ -48,8 +48,13 @@ const Description: FC<{ requestId: string }> = ({ requestId }) => {
 	);
 };
 
+const RequestBodyWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+`;
+
 export const RequestBody: FC<Props> = ({ request }) => (
-	<>
+	<RequestBodyWrapper>
 		<Row>
 			<Description requestId={request.index} />
 		</Row>
@@ -70,5 +75,5 @@ export const RequestBody: FC<Props> = ({ request }) => (
 				</Tab>
 			</Tabs>
 		</Row>
-	</>
+	</RequestBodyWrapper>
 );

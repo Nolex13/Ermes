@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styled, { DefaultTheme, ThemeProvider } from 'styled-components';
 import { Sidebar } from './components/Sidebar';
-import { Main } from './components/Main';
+import { Main } from './components/Main/Main';
 import { Provider } from 'react-redux';
 import { Store } from './data/Store';
 import { Header } from './components/Header/Header';

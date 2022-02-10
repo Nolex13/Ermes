@@ -8,7 +8,7 @@ const initialState: Request[] = [
 		description: 'get order by Id',
 		index: '2e119b92-96c6-4f29-b9ae-da6ee1a14c72',
 		method: Method.GET,
-		url: '/a/random/url/for/example/{{id}}',
+		url: 'http://orderone-production.prd.bravofly.intra/orderone/v3/orders/cia/1862308727',
 		params: [
 			{
 				index: uuid(),
@@ -25,7 +25,7 @@ const initialState: Request[] = [
 				hidden: false,
 			},
 		],
-		body: { orderId: 69 },
+		body: null,
 	},
 	{
 		description: 'get document by Id',

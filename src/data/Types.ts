@@ -16,6 +16,18 @@ export type Request = {
 	body: object | null;
 };
 
+export type ResponseData = {
+	index: string;
+	responseStatus: number;
+	header: KeyValueMap[];
+	body: object | null;
+};
+
+export type Response = {
+	loading: boolean;
+	data: ResponseData | null;
+};
+
 export type KeyValueMap = {
 	index: string;
 	hidden: boolean;
