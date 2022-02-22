@@ -71,5 +71,6 @@
     "*.{html,css,less,ejs}": [
       "prettier --write"
     ]
-  }
+  },
+  "proxy": "http://localhost:8080"
 }

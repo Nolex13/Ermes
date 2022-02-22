@@ -1,26 +1,22 @@
-import { Method, Request } from '../data/Types';
+import { Request } from '../data/Types';
 
 export class RequestExecutor {
 	executeUsing = (request: Request): Promise<Response> => {
-		if (request.method === Method.GET) return this.fetchGET(request);
-		else return this.fetch(request);
-	};
-
-	private fetchGET = (request: Request): Promise<Response> => {
-		console.log('request', {
-			method: 'GET',
+		const serverRequest: ServerRequest = {
+			index: request.index,
+			url: request.url,
+			method: request.method,
+		};
+		return fetch('/api//v1/proxy', {
+			method: 'POST',
 			headers: request.header.map(h => [h.key, h.value]),
-		});
-		return fetch(request.url, {
-			method: 'GET',
-			headers: request.header.map(h => [h.key, h.value]),
+			body: JSON.stringify(serverRequest),
 		});
 	};
-
-	private fetch = (request: Request): Promise<Response> =>
-		fetch(request.url, {
-			method: 'GET',
-			headers: request.header.map(h => [h.key, h.value]),
-			body: JSON.stringify(request.body),
-		});
 }
+
+type ServerRequest = {
+	index: string;
+	url: string;
+	method: string;
+};
