@@ -12,16 +12,31 @@ export type Request = {
 	description: string;
 	url: string;
 	params: KeyValueMap[];
-	header: KeyValueMap[];
+	headers: KeyValueMap[];
 	body: object | null;
 };
 
 export type ResponseData = {
 	index: string;
-	responseStatus: number;
+	status: ResponseStatus;
 	header: KeyValueMap[];
 	body: object | null;
 };
+
+export type ResponseStatus = {
+	description: string;
+	value: number;
+	series: HttpStatusSeries;
+	reason: string;
+};
+
+enum HttpStatusSeries {
+	INFORMATIONAL = 'INFORMATIONAL',
+	SUCCESSFUL = 'SUCCESSFUL',
+	REDIRECTION = 'REDIRECTION',
+	CLIENT_ERROR = 'CLIENT_ERROR',
+	SERVER_ERROR = 'SERVER_ERROR',
+}
 
 export type Response = {
 	loading: boolean;

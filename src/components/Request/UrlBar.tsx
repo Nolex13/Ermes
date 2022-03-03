@@ -1,20 +1,20 @@
 import React, { FC } from 'react';
 import { Method, Request } from '../../data/Types';
-import { useAppDispatch } from '../../utils/Hooks';
-import { update } from '../../data/slices/RequestSlice';
+import { useAppDispatch, useAppSelector } from '../../utils/Hooks';
+import { getRequestBy, update } from '../../data/slices/RequestSlice';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { Url } from './Url';
 import { Button } from '../Button/Button';
 import { RequestExecutor } from '../../logic/RequestExecutor';
 import { setData, setLoading } from '../../data/slices/ResponseSlice';
-import { uuid } from '../../utils/Uuid';
 
 interface Props {
-	request: Request;
+	requestId: string;
 }
 
-export const UrlBar: FC<Props> = ({ request }) => {
+export const UrlBar: FC<Props> = ({ requestId }) => {
 	const dispatch = useAppDispatch();
+	const request = useAppSelector(state => getRequestBy(state, requestId));
 
 	const onMethodChange = (newMethod: string) => {
 		const updatedRequest: Request = {
@@ -33,15 +33,7 @@ export const UrlBar: FC<Props> = ({ request }) => {
 		const executor = new RequestExecutor();
 		dispatch(setLoading(true));
 		executor.executeUsing(request).then(response => {
-			console.log('response', response);
-			dispatch(
-				setData({
-					index: uuid(),
-					body: response.json(),
-					header: [],
-					responseStatus: response.status,
-				}),
-			);
+			dispatch(setData(response));
 		});
 	};
 

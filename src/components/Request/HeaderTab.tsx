@@ -19,8 +19,8 @@ export const HeadersTab: FC<Props> = ({ requestId }) => {
 				index: request.index,
 				newValue: {
 					...request,
-					header: [
-						...request.header,
+					headers: [
+						...request.headers,
 						{
 							index: uuid(),
 							hidden: false,
@@ -38,7 +38,7 @@ export const HeadersTab: FC<Props> = ({ requestId }) => {
 				index: request.index,
 				newValue: {
 					...request,
-					header: request.header.filter(p => p.index !== index),
+					headers: request.headers.filter(p => p.index !== index),
 				},
 			}),
 		);
@@ -49,7 +49,7 @@ export const HeadersTab: FC<Props> = ({ requestId }) => {
 				index: request.index,
 				newValue: {
 					...request,
-					header: [],
+					headers: [],
 				},
 			}),
 		);
@@ -60,7 +60,7 @@ export const HeadersTab: FC<Props> = ({ requestId }) => {
 				index: request.index,
 				newValue: {
 					...request,
-					header: request.header.map(p =>
+					headers: request.headers.map(p =>
 						p.index === newHeader.index ? newHeader : p,
 					),
 				},
@@ -69,7 +69,7 @@ export const HeadersTab: FC<Props> = ({ requestId }) => {
 	};
 	return (
 		<KeyValueTable
-			rows={request.header}
+			rows={request.headers}
 			onCreateNewRow={onCreateNewRow}
 			onDeleteRow={onDeleteRow}
 			onDeleteAll={onDeleteAll}

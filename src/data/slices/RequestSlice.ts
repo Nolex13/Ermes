@@ -17,7 +17,7 @@ const initialState: Request[] = [
 				hidden: true,
 			},
 		],
-		header: [
+		headers: [
 			{
 				index: uuid(),
 				key: 'Content-Type',
@@ -40,7 +40,7 @@ const initialState: Request[] = [
 				hidden: true,
 			},
 		],
-		header: [
+		headers: [
 			{
 				index: uuid(),
 				key: 'Content-Type',
@@ -69,7 +69,6 @@ export const RequestSlice = createSlice({
 			return [...state, payload];
 		},
 		update: (state, action: UpdateAction) => {
-			console.log(action);
 			return state.map((r: Request) =>
 				r.index === action.payload.index ? action.payload.newValue : r,
 			);
@@ -113,7 +112,7 @@ export const createNewEmptyRequest = (): Request => ({
 			hidden: true,
 		},
 	],
-	header: [
+	headers: [
 		{
 			index: uuid(),
 			key: 'Content-Type',

@@ -59,7 +59,7 @@ export const RequestBody: FC<Props> = ({ request }) => (
 			<Description requestId={request.index} />
 		</Row>
 		<Row>
-			<UrlBar request={request} />
+			<UrlBar requestId={request.index} />
 		</Row>
 		<Separator />
 		<Row>
